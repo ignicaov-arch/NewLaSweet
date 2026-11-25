@@ -1,0 +1,169 @@
+---
+import '../styles/site.css';
+import '../styles/linkbio.css';
+import { BRAND } from '../data/brand';
+import { buildSiteSchemaGraph } from '../domain/seoSchema';
+import { sanitizeUrl } from '../domain/whatsapp';
+import CookieConsent from '../components/CookieConsent';
+import WhatsAppFloat from '../components/WhatsAppFloat';
+import LinkBioCards from '../components/linkbio/LinkBioCards';
+import LinkBioHero from '../components/linkbio/LinkBioHero';
+import LinkBioShowcase from '../components/linkbio/LinkBioShowcase';
+
+const schemaJson = buildSiteSchemaGraph('linkbio');
+const speculationJson = JSON.stringify({
+  prerender: [{ urls: ['/'], eagerness: 'moderate' }]
+});
+const safeInstagramHref = sanitizeUrl(BRAND.instagramUrl);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>La Sweet | Links Oficiais, Cardápio e WhatsApp</title>
+  <meta
+    name="description"
+    content="Links oficiais da La Sweet em Divinópolis: pedidos no WhatsApp, presentes em caixa rosa, cardápio de croissants e localização no Centro."
+  />
+  <meta name="author" content="La Sweet" />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
+  <link rel="canonical" href="https://newlasweet.pages.dev/linkbio" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content={BRAND.fullName} />
+  <meta property="og:url" content="https://newlasweet.pages.dev/linkbio" />
+  <meta property="og:title" content="La Sweet | Links Oficiais, Cardápio e WhatsApp" />
+  <meta
+    property="og:description"
+    content="Doces com afeto no Centro de Divinópolis: croissants, bombons de morango, brunch e presentes."
+  />
+  <meta property="og:image" content="https://newlasweet.pages.dev/img/og-lasweet-1200x630.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#FBF4EE" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <script is:inline type="application/ld+json" set:html={schemaJson.replace(/</g, '\\u003c')} />
+  <script is:inline type="speculationrules" set:html={speculationJson.replace(/</g, '\\u003c')} />
+</head>
+<body class="linkbio-page">
+  <header class="linkbio-topbar">
+    <a class="linkbio-topbar__link text-current" href="/" style="color: #2b1814;">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M19 12H5M11 18l-6-6 6-6" vectorEffect="non-scaling-stroke" />
+      </svg>
+      <span>Site completo</span>
+    </a>
+
+    <a
+      class="linkbio-topbar__link text-current"
+      href={safeInstagramHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: #2b1814;"
+    >
+      <span>{BRAND.instagramHandle}</span>
+    </a>
+  </header>
+
+  <main class="linkbio-main" id="conteudo-linkbio">
+    <LinkBioHero>
+      <h1 class="linkbio-hero__title">
+        La Sweet <em>Doces com afeto</em>
+      </h1>
+    </LinkBioHero>
+
+    <LinkBioCards />
+    <LinkBioShowcase />
+
+    <section className="linkbio-panel revela" aria-labelledby="horarios-linkbio">
+      <h2 id="horarios-linkbio" style="font-size: 0.98rem; font-weight: 700; margin: 0 0 0.35rem;">
+        Horários no Centro de Divinópolis
+      </h2>
+      <table className="linkbio-table">
+        <thead>
+          <tr>
+            <th scope="col">Dia</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Atendimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Segunda a sexta</td>
+            <td>12h às 18h30</td>
+            <td>Salão e retiradas</td>
+          </tr>
+          <tr>
+            <td>Sábado</td>
+            <td>09h às 18h</td>
+            <td>Salão e encomendas</td>
+          </tr>
+          <tr>
+            <td>Domingo</td>
+            <td>Fechado</td>
+            <td>Mensagens no WhatsApp</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin: 0.7rem 0 0; font-size: 0.78rem; color: rgba(43, 24, 20, 0.74);">
+        {BRAND.address.street} · {BRAND.address.city} - {BRAND.address.state} · Atualizado em{' '}
+        <time datetime="2026-11-25">{BRAND.updatedDisplay}</time>.
+      </p>
+    </section>
+  </main>
+
+  <footer className="linkbio-footer">
+    <p style="margin: 0 0 0.75rem;">
+      © 2026 {BRAND.legalBrand} · {BRAND.address.street}, {BRAND.address.neighborhood},{' '}
+      {BRAND.address.city} - {BRAND.address.state}.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+      <a class="linkbio-topbar__link text-current" href="/" style="color: #2b1814;">
+        Página Inicial
+      </a>
+      <a class="linkbio-topbar__link text-current" href="/#duvidas" style="color: #2b1814;">
+        Dúvidas Frequentes
+      </a>
+      <button
+        type="button"
+        id="btn-preferencias-cookies"
+        class="linkbio-topbar__link"
+        style="color: #2b1814; font-family: inherit; cursor: pointer;"
+      >
+        Preferências LGPD
+      </button>
+    </div>
+  </footer>
+
+  <CookieConsent />
+  <WhatsAppFloat />
+
+  <script>
+    import '../scripts/smoothMotion';
+    import '../scripts/interactions';
+  </script>
+</body>
+</html>

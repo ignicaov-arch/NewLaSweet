@@ -1,0 +1,27 @@
+:root {
+  --creme: #fbf4ee;
+  --papel: #fffdf9;
+  --areia: #f2e3d8;
+  --tinta: #2b1814;
+  --tinta-2: #3c231d;
+  --texto: #2b1814;
+  --texto-suave: #694e46;
+  --rosa: #f48c94;
+  --rosa-vivo: #e87781;
+  --rosa-suave: #fadadd;
+  --rosa-texto: #a63446;
+  --ouro: #c89b54;
+  --linha: rgba(43, 24, 20, 0.12);
+  --linha-clara: rgba(255, 253, 249, 0.16);
+
+  --fonte-titulo: 'Bricolage Grotesque', system-ui, sans-serif;
+  --fonte-serif: 'Instrument Serif', Georgia, serif;
+  --fonte-texto: 'Bricolage Grotesque', system-ui, sans-serif;
+
+  --raio: 28px;
+  --raio-m: 20px;
+  --largura: 1240px;
+  --respiro: clamp(76px, 9vw, 132px);
+  --ease-144: cubic-bezier(0.16, 1, 0.3, 1);
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}

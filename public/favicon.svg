@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="20" fill="#F48C94"/>
+  <rect x="4" y="4" width="56" height="56" rx="16" stroke="#FFFDF9" stroke-opacity="0.65" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <text x="32" y="34" text-anchor="middle" fill="#FFFDF9" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="600" letter-spacing="-0.4">La Sweet</text>
+  <path d="M32 48.2c-0.3 0-4.9-3.1-4.9-5.9a2.7 2.7 0 0 1 4.9-1.5 2.7 2.7 0 0 1 4.9 1.5c0 2.8-4.6 5.9-4.9 5.9Z" fill="#FFFDF9"/>
+</svg>

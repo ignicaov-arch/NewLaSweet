@@ -1,0 +1,120 @@
+---
+import '../styles/site.css';
+import { BRAND } from '../data/brand';
+import { buildSiteSchemaGraph } from '../domain/seoSchema';
+import BentoSpecialties from '../components/BentoSpecialties';
+import BoutiqueSpaceSection from '../components/BoutiqueSpaceSection';
+import CookieConsent from '../components/CookieConsent';
+import FaqSection from '../components/FaqSection';
+import FooterSection from '../components/FooterSection';
+import GiftExperienceSection from '../components/GiftExperienceSection';
+import HeaderPill from '../components/HeaderPill';
+import HeroSection from '../components/HeroSection';
+import HowItWorksSection from '../components/HowItWorksSection';
+import LocationSection from '../components/LocationSection';
+import MarqueeRibbon from '../components/MarqueeRibbon';
+import MenuCatalogSection from '../components/MenuCatalogSection';
+import OrderConciergeSection from '../components/OrderConciergeSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import WhatsAppFloat from '../components/WhatsAppFloat';
+
+const schemaJson = buildSiteSchemaGraph('home');
+const speculationJson = JSON.stringify({
+  prerender: [{ urls: ['/linkbio', '/politica-de-privacidade'], eagerness: 'moderate' }]
+});
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>La Sweet Divinópolis | Confeitaria, Croissants e Presentes</title>
+  <meta
+    name="description"
+    content="Confeitaria e cafeteria La Sweet no Centro de Divinópolis. Croissants doces e salgados, bombom de morango, brunch, bolos e caixas de presente com afeto."
+  />
+  <meta name="author" content="La Sweet" />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
+  <link rel="canonical" href="https://newlasweet.pages.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content={BRAND.fullName} />
+  <meta property="og:url" content="https://newlasweet.pages.dev/" />
+  <meta property="og:title" content="La Sweet Divinópolis | Confeitaria, Croissants e Presentes" />
+  <meta
+    property="og:description"
+    content="Doces com afeto no Centro de Divinópolis: croissants recheados, bombom de morango, tostas quentes, cafeteria e presentes."
+  />
+  <meta property="og:image" content="https://newlasweet.pages.dev/img/og-lasweet-1200x630.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="La Sweet Confeitaria e Brunch em Divinópolis" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="La Sweet Divinópolis | Confeitaria e Brunch" />
+  <meta
+    name="twitter:description"
+    content="Peça croissants recheados, bombons de morango e presentes artesanais na La Sweet em Divinópolis."
+  />
+  <meta name="twitter:image" content="https://newlasweet.pages.dev/img/og-lasweet-1200x630.webp" />
+  <meta name="theme-color" content="#2B1814" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link
+    rel="preload"
+    as="image"
+    href="/img/hero.webp"
+    imagesrcset="/img/hero-800.webp 800w, /img/hero.webp 1600w"
+    imagesizes="100vw"
+    fetchpriority="high"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <script is:inline type="application/ld+json" set:html={schemaJson.replace(/</g, '\\u003c')} />
+  <script is:inline type="speculationrules" set:html={speculationJson.replace(/</g, '\\u003c')} />
+</head>
+<body>
+  <header class="topo" id="topo">
+    <HeaderPill />
+  </header>
+
+  <main id="conteudo-principal">
+    <HeroSection>
+      <h1 class="hero__titulo surge">
+        Doces com afeto.
+        <br />
+        <em>Cada detalhe encanta.</em>
+      </h1>
+    </HeroSection>
+    <MarqueeRibbon />
+    <BentoSpecialties />
+    <BoutiqueSpaceSection />
+    <MenuCatalogSection />
+    <GiftExperienceSection />
+    <HowItWorksSection />
+    <TestimonialsSection />
+    <FaqSection />
+    <OrderConciergeSection />
+    <LocationSection />
+  </main>
+
+  <footer class="rodape">
+    <FooterSection isHome={true} />
+  </footer>
+
+  <CookieConsent />
+  <WhatsAppFloat />
+
+  <script>
+    import '../scripts/smoothMotion';
+    import '../scripts/interactions';
+  </script>
+</body>
+</html>

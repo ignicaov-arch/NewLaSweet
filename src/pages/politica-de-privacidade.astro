@@ -1,0 +1,145 @@
+---
+import '../styles/site.css';
+import { BRAND } from '../data/brand';
+import { buildSiteSchemaGraph } from '../domain/seoSchema';
+import { buildWhatsAppUrl, sanitizeUrl } from '../domain/whatsapp';
+import CookieConsent from '../components/CookieConsent';
+import FooterSection from '../components/FooterSection';
+import LogoEmblem from '../components/LogoEmblem';
+import WhatsAppFloat from '../components/WhatsAppFloat';
+
+const schemaJson = buildSiteSchemaGraph('privacy');
+const dpoWhatsappHref = sanitizeUrl(
+  buildWhatsAppUrl(
+    'Olá, equipe La Sweet! Gostaria de solicitar informações ou exercer meus direitos da LGPD.'
+  )
+);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Política de Privacidade e LGPD | La Sweet Divinópolis</title>
+  <meta
+    name="description"
+    content="Política de Privacidade e proteção de dados (LGPD) da La Sweet Confeitaria em Divinópolis - MG. Transparência e minimização de dados no atendimento."
+  />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
+  <link rel="canonical" href="https://newlasweet.pages.dev/politica-de-privacidade" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content={BRAND.fullName} />
+  <meta property="og:url" content="https://newlasweet.pages.dev/politica-de-privacidade" />
+  <meta property="og:title" content="Política de Privacidade e LGPD | La Sweet Divinópolis" />
+  <meta
+    property="og:description"
+    content="Transparência no uso de dados e preferências de cookies na La Sweet Divinópolis."
+  />
+  <meta property="og:image" content="https://newlasweet.pages.dev/img/og-lasweet-1200x630.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#2B1814" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <script is:inline type="application/ld+json" set:html={schemaJson.replace(/</g, '\\u003c')} />
+</head>
+<body>
+  <header class="topo is-rolou" id="topo" data-always-scrolled="true">
+    <div class="topo__pilula">
+      <a class="marca text-current" href="/" style="color: inherit; text-decoration: none;">
+        <LogoEmblem size={34} />
+        <span>{BRAND.name}</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="/">Início</a>
+        <a href="/#cardapio">Cardápio</a>
+        <a href="/#encomendar">Pedidos</a>
+        <a href="/linkbio">LinkBio</a>
+      </nav>
+      <a class="botao botao--pequeno topo__cta" href="/#encomendar">Fazer pedido</a>
+    </div>
+  </header>
+
+  <main class="wrap max-w-5xl" style="padding-top: 128px; padding-bottom: 56px;">
+    <article
+      style="padding: clamp(28px, 5vw, 52px); border-radius: 28px; background: var(--papel, #fffdf9); border: 1px solid var(--linha, rgba(43, 24, 20, 0.12));"
+    >
+      <p class="etiqueta"><i aria-hidden="true" />Transparência e privacidade</p>
+      <h1 class="titulo-m" style="margin-bottom: 18px;">
+        Política de Privacidade e <em>LGPD.</em>
+      </h1>
+      <p class="answer-first" style="color: var(--texto-suave, #694e46);">
+        A <strong>{BRAND.legalBrand}</strong> valoriza a privacidade de seus clientes e cumpre a
+        Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), o Marco Civil da Internet e o
+        Código de Defesa do Consumidor. Última revisão:{' '}
+        <time datetime="2026-11-25">{BRAND.updatedDisplay}</time>.
+      </p>
+
+      <h2 style="font-size: 24px; margin: 28px 0 10px;">1. Controladora e endereço oficial</h2>
+      <p>
+        O atendimento é realizado pela <strong>{BRAND.legalBrand}</strong> na {BRAND.address.street},
+        {BRAND.address.neighborhood}, {BRAND.address.city} - {BRAND.address.state}, CEP{' '}
+        {BRAND.address.postalCode}, com canal oficial pelo WhatsApp {BRAND.whatsappDisplay}.
+      </p>
+
+      <h2 style="font-size: 24px; margin: 28px 0 10px;">2. Minimização de dados nos pedidos</h2>
+      <p>
+        Não exigimos cadastro prévio nem coletamos CPF ou dados de cartão na página. O formulário
+        rápido da <a href="/">página inicial</a> prepara as informações apenas no seu próprio
+        dispositivo para iniciar a conversa pelo WhatsApp, onde você compartilha voluntariamente os
+        detalhes necessários para retirada ou entrega.
+      </p>
+
+      <h2 style="font-size: 24px; margin: 28px 0 10px;">3. Preferências e consentimento</h2>
+      <p>
+        Guardamos apenas a sua preferência de privacidade (<code>lgpdConsent</code>) no navegador.
+        Opções analíticas permanecem desligadas por padrão até consentimento explícito, podendo ser
+        alteradas a qualquer instante pelo rodapé.
+      </p>
+
+      <h2 style="font-size: 24px; margin: 28px 0 10px;">4. Direitos do titular (Art. 18 da LGPD)</h2>
+      <p>
+        Você pode solicitar confirmação de tratamento, acesso, correção, portabilidade ou exclusão
+        dos dados de atendimento a qualquer momento pelo nosso canal oficial no WhatsApp.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px;">
+        <a
+          class="botao botao--escuro text-white"
+          href={dpoWhatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color: #fffdf9;"
+        >
+          Falar sobre privacidade no WhatsApp
+        </a>
+        <a class="botao botao--linha" href="/">Voltar ao início</a>
+        <a class="botao botao--linha" href="/linkbio">Abrir LinkBio</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="rodape">
+    <FooterSection isHome={false} />
+  </footer>
+  <CookieConsent />
+  <WhatsAppFloat />
+
+  <script>
+    import '../scripts/smoothMotion';
+    import '../scripts/interactions';
+  </script>
+</body>
+</html>
