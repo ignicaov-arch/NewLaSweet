@@ -33,12 +33,15 @@ function setupHeaderAndMenu(): void {
     header.classList.remove('is-aberto');
     toggleBtn?.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    window.__lenisInstance?.start();
   };
 
   toggleBtn?.addEventListener('click', () => {
     const opened = header.classList.toggle('is-aberto');
     toggleBtn.setAttribute('aria-expanded', String(opened));
     document.body.style.overflow = opened ? 'hidden' : '';
+    if (opened) window.__lenisInstance?.stop();
+    else window.__lenisInstance?.start();
   });
 
   menu?.querySelectorAll('a').forEach((link) => {

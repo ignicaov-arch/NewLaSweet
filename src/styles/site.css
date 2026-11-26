@@ -1,13 +1,11 @@
+@import 'lenis/dist/lenis.css';
 @import './tokens.css';
 @import './sections.css';
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scrollbar-width: none; }
 html::-webkit-scrollbar { display: none; }
-html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: hidden; }
 
 body {
   margin: 0;
@@ -100,15 +98,12 @@ p { margin: 0 0 1em; }
   justify-content: center; align-items: center; padding: 118px 24px clamp(130px, 18vw, 270px);
   text-align: center; color: #fffdf9;
 }
-.hero__foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; z-index: -3; transform: scale(1.05); }
-@media (prefers-reduced-motion: no-preference) {
-  .hero__foto { animation: hero-zoom 2.2s var(--ease-144) forwards; }
-  .js .surge { opacity: 0; transform: translateY(22px); animation: surgir 0.95s var(--ease-144) forwards; }
-  .js .surge:nth-child(2) { animation-delay: 0.1s; }
-  .js .surge:nth-child(3) { animation-delay: 0.2s; }
-  .js .surge:nth-child(4) { animation-delay: 0.3s; }
-  .js .surge:nth-child(5) { animation-delay: 0.4s; }
-}
+.hero__foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; z-index: -3; transform: scale(1.05); animation: hero-zoom 2.2s var(--ease-144) forwards; }
+.js .surge { opacity: 0; transform: translateY(22px); animation: surgir 0.95s var(--ease-144) forwards; }
+.js .surge:nth-child(2) { animation-delay: 0.1s; }
+.js .surge:nth-child(3) { animation-delay: 0.2s; }
+.js .surge:nth-child(4) { animation-delay: 0.3s; }
+.js .surge:nth-child(5) { animation-delay: 0.4s; }
 .hero__veu {
   position: absolute; inset: 0; z-index: -2;
   background: radial-gradient(ellipse 72% 58% at 50% 44%, rgba(43, 24, 20, 0.56), transparent 72%),
@@ -131,18 +126,14 @@ p { margin: 0 0 1em; }
   background: linear-gradient(180deg, rgba(255, 253, 249, 0.24), rgba(255, 253, 249, 0.05)); -webkit-background-clip: text; background-clip: text;
 }
 .chuva { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-.chuva i { position: absolute; top: -20px; left: var(--x); width: var(--w); height: var(--h); background: var(--c); border-radius: var(--r); opacity: 0.85; }
-@media (prefers-reduced-motion: no-preference) {
-  .chuva i { animation: cair var(--d) linear var(--atraso) infinite; }
-}
+.chuva i { position: absolute; top: -20px; left: var(--x); width: var(--w); height: var(--h); background: var(--c); border-radius: var(--r); opacity: 0.85; animation: cair var(--d) linear var(--atraso) infinite; }
 @keyframes cair { from { transform: translate3d(0, -40px, 0) rotate(0deg); } to { transform: translate3d(var(--deriva), 105vh, 0) rotate(var(--giro)); } }
 @keyframes hero-zoom { to { transform: scale(1); } }
 @keyframes surgir { to { opacity: 1; transform: none; } }
 
 .faixa-wrap { display: flex; align-items: center; border-bottom: 1px solid var(--linha); position: relative; }
 .faixa { overflow: hidden; padding: 26px 0; flex: 1; min-width: 0; }
-.faixa__trilho { display: flex; align-items: center; gap: 34px; width: max-content; will-change: transform; }
-@media (prefers-reduced-motion: no-preference) { .faixa__trilho { animation: faixa 38s linear infinite; } }
+.faixa__trilho { display: flex; align-items: center; gap: 34px; width: max-content; will-change: transform; animation: faixa 38s linear infinite; }
 .faixa-wrap.is-pausada .faixa__trilho { animation-play-state: paused; }
 .faixa span { font: 500 clamp(28px, 3.8vw, 54px)/1 var(--fonte-titulo); letter-spacing: -0.04em; white-space: nowrap; }
 .faixa span em { color: var(--rosa-texto); }
@@ -152,7 +143,3 @@ p { margin: 0 0 1em; }
   background: var(--papel); color: var(--tinta); font: 600 12.5px/1 var(--fonte-texto); cursor: pointer; flex: none;
 }
 @keyframes faixa { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) {
-  .chuva { display: none; }
-  .js .surge, .js .revela { opacity: 1; transform: none; }
-}

@@ -146,8 +146,7 @@
 .mapa__rua--fina { stroke-width: 7; }
 .mapa__praca { fill: #d8e2c7; }
 .mapa__pino { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--rosa); border: 4px solid var(--tinta); }
-.mapa__pino i { position: absolute; inset: -16px; border-radius: 50%; border: 2px solid var(--rosa-texto); }
-@media (prefers-reduced-motion: no-preference) { .mapa__pino i { animation: pulso 2.2s ease-out infinite; } }
+.mapa__pino i { position: absolute; inset: -16px; border-radius: 50%; border: 2px solid var(--rosa-texto); animation: pulso 2.2s ease-out infinite; }
 @keyframes pulso { from { transform: scale(0.4); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
 .mapa__rotulo { position: absolute; left: 50%; top: calc(50% + 24px); transform: translateX(-50%); padding: 8px 14px; border-radius: 999px; background: var(--tinta); color: var(--papel); font-size: 13px; font-weight: 600; white-space: nowrap; }
 
