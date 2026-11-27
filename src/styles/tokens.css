@@ -1,4 +1,9 @@
 :root {
+  color-scheme: light;
+  accent-color: #a63446;
+  --scrollbar-thumb: #7a564c;
+  --scrollbar-thumb-hover: #5c3d35;
+  --scrollbar-track: #fbf4ee;
   --creme: #fbf4ee;
   --papel: #fffdf9;
   --areia: #f2e3d8;

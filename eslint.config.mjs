@@ -25,8 +25,13 @@ export default tseslint.config(
         HTMLDetailsElement: 'readonly',
         HTMLInputElement: 'readonly',
         HTMLSelectElement: 'readonly',
+        HTMLImageElement: 'readonly',
         HTMLElement: 'readonly',
         Element: 'readonly',
+        Node: 'readonly',
+        KeyboardEvent: 'readonly',
+        TouchEvent: 'readonly',
+        fetch: 'readonly',
         URLSearchParams: 'readonly'
       }
     },

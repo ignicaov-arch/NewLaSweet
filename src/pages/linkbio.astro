@@ -5,9 +5,11 @@ import { BRAND } from '../data/brand';
 import { buildSiteSchemaGraph } from '../domain/seoSchema';
 import { sanitizeUrl } from '../domain/whatsapp';
 import CookieConsent from '../components/CookieConsent';
+import ReviewLightbox from '../components/ReviewLightbox';
 import WhatsAppFloat from '../components/WhatsAppFloat';
 import LinkBioCards from '../components/linkbio/LinkBioCards';
 import LinkBioHero from '../components/linkbio/LinkBioHero';
+import LinkBioReviews from '../components/linkbio/LinkBioReviews';
 import LinkBioShowcase from '../components/linkbio/LinkBioShowcase';
 
 const schemaJson = buildSiteSchemaGraph('linkbio');
@@ -97,8 +99,9 @@ const safeInstagramHref = sanitizeUrl(BRAND.instagramUrl);
 
     <LinkBioCards />
     <LinkBioShowcase />
+    <LinkBioReviews />
 
-    <section className="linkbio-panel revela" aria-labelledby="horarios-linkbio">
+    <section class="linkbio-panel revela" aria-labelledby="horarios-linkbio">
       <h2 id="horarios-linkbio" style="font-size: 0.98rem; font-weight: 700; margin: 0 0 0.35rem;">
         Horários no Centro de Divinópolis
       </h2>
@@ -135,7 +138,7 @@ const safeInstagramHref = sanitizeUrl(BRAND.instagramUrl);
     </section>
   </main>
 
-  <footer className="linkbio-footer">
+  <footer class="linkbio-footer">
     <p style="margin: 0 0 0.75rem;">
       © 2026 {BRAND.legalBrand} · {BRAND.address.street}, {BRAND.address.neighborhood},{' '}
       {BRAND.address.city} - {BRAND.address.state}.
@@ -159,6 +162,7 @@ const safeInstagramHref = sanitizeUrl(BRAND.instagramUrl);
   </footer>
 
   <CookieConsent />
+  <ReviewLightbox />
   <WhatsAppFloat />
 
   <script>

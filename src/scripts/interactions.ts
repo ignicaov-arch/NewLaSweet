@@ -1,5 +1,6 @@
 import { getStoreOpenStatus } from '../domain/schedule';
 import { buildOrderInquiryMessage, buildWhatsAppUrl } from '../domain/whatsapp';
+import { initGoogleReviews } from './googleReviewsSync';
 import { initLgpdConsent } from './lgpdConsent';
 
 function setupLiveStatus(): void {
@@ -105,3 +106,4 @@ setupHeaderAndMenu();
 setupFaqAccordion();
 setupOrderForm();
 initLgpdConsent();
+void initGoogleReviews();

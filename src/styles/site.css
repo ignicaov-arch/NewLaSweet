@@ -1,10 +1,27 @@
 @import 'lenis/dist/lenis.css';
 @import './tokens.css';
 @import './sections.css';
+@import './testimonials.css';
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scrollbar-width: none; }
-html::-webkit-scrollbar { display: none; }
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+@supports not (scrollbar-color: auto) {
+  html { scrollbar-width: auto; }
+  html::-webkit-scrollbar { width: 10px; height: 10px; }
+  html::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  html::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-track);
+  }
+  html::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+}
+select { appearance: none; -webkit-appearance: none; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
 body {

@@ -20,7 +20,12 @@ export function OrderConciergeSection() {
           <form className="agendar__form" id="form-visita" noValidate>
             <label className="campo" htmlFor="campo-ocasiao">
               <span>Motivo do pedido</span>
-              <select id="campo-ocasiao" name="ocasion" className="text-base" defaultValue="Café ou brunch hoje">
+              <select
+                id="campo-ocasiao"
+                name="ocasion"
+                className="ui-select text-base pr-10"
+                defaultValue="Café ou brunch hoje"
+              >
                 <option value="Café ou brunch hoje">Café ou brunch hoje</option>
                 <option value="Caixa de presente">Caixa de presente</option>
                 <option value="Bolo ou festa">Bolo ou celebração</option>
@@ -34,7 +39,7 @@ export function OrderConciergeSection() {
               <select
                 id="campo-selecao"
                 name="selecao"
-                className="text-base"
+                className="ui-select text-base pr-10"
                 defaultValue="Croissant de Nutella com morango"
               >
                 <option value="Croissant de Nutella com morango">

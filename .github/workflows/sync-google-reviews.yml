@@ -1,0 +1,49 @@
+name: Sync Google 5-Star Reviews
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Sync latest 50 Google reviews into latest 20 five-star window
+        env:
+          GOOGLE_DATA_ID: '0xa0a5883bda2af9:0x372057978fff2374'
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+          OUTSCRAPER_API_KEY: ${{ secrets.OUTSCRAPER_API_KEY }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GBP_ACCESS_TOKEN: ${{ secrets.GBP_ACCESS_TOKEN }}
+          GBP_LOCATION_NAME: ${{ secrets.GBP_LOCATION_NAME }}
+          SITE_DOMAIN: 'newlasweet.pages.dev'
+          SITE_PHONE_DIGITS: '5537991114767'
+          SITE_CITY: 'Divinópolis'
+          SITE_NAME_TOKEN: 'La Sweet'
+          FETCH_LIMIT: '50'
+          DISPLAY_LIMIT: '20'
+        run: npm run sync:reviews
+
+      - name: Commit updated reviews if changed
+        run: |
+          if [ -n "$(git status --porcelain public/data/google-reviews.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/data/google-reviews.json
+            git commit -m "chore(data): atualiza janela das 20 avaliacoes 5 estrelas do Google"
+            git push
+          fi
